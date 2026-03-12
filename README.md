@@ -1,6 +1,22 @@
 # mcp-3d-gen
 
-Multi-provider AI 3D model generation MCP server, focused on free-tier models.
+<p align="center">
+  <img src="docs/banner.svg" alt="mcp-3d-gen banner" width="800">
+</p>
+
+<p align="center">
+  <strong>Multi-provider AI 3D model generation MCP server, focused on free-tier models.</strong>
+</p>
+
+<p align="center">
+  <a href="README_CN.md">中文文档</a>
+</p>
+
+## Architecture
+
+<p align="center">
+  <img src="docs/architecture.svg" alt="Architecture" width="800">
+</p>
 
 ## Supported Providers
 

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="520" fill="url(#bg2)" rx="12"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" fill="#e6edf3" font-family="'Segoe UI',Arial,sans-serif" font-size="22" font-weight="bold">Architecture</text>
+
+  <!-- User / Claude Code box -->
+  <rect x="40" y="180" width="180" height="80" rx="10" fill="#1a2233" stroke="#30363d" stroke-width="1.5"/>
+  <text x="130" y="215" text-anchor="middle" fill="#e6edf3" font-family="Arial,sans-serif" font-size="15" font-weight="bold">Claude Code</text>
+  <text x="130" y="240" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="12">User / AI Assistant</text>
+
+  <!-- Arrow: User -> Server -->
+  <line x1="220" y1="210" x2="340" y2="210" stroke="#00d4ff" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="280" y="200" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="10">text / image</text>
+  <line x1="340" y1="230" x2="220" y2="230" stroke="#7b2fff" stroke-width="2" marker-end="url(#arrow2)"/>
+  <text x="280" y="252" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="10">GLB / FBX / OBJ</text>
+
+  <!-- MCP Server box -->
+  <rect x="340" y="120" width="280" height="200" rx="12" fill="#0d1926" stroke="#00d4ff" stroke-width="2" opacity="0.9"/>
+  <text x="480" y="152" text-anchor="middle" fill="#00d4ff" font-family="Arial,sans-serif" font-size="16" font-weight="bold">mcp-3d-gen</text>
+  <line x1="360" y1="165" x2="600" y2="165" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Tools inside server -->
+  <rect x="365" y="180" width="230" height="30" rx="6" fill="#1a2233" stroke="#30363d" stroke-width="1"/>
+  <text x="480" y="200" text-anchor="middle" fill="#58a6ff" font-family="monospace" font-size="12">generate_3d</text>
+
+  <rect x="365" y="220" width="230" height="30" rx="6" fill="#1a2233" stroke="#30363d" stroke-width="1"/>
+  <text x="480" y="240" text-anchor="middle" fill="#58a6ff" font-family="monospace" font-size="12">query_3d_status</text>
+
+  <rect x="365" y="260" width="230" height="30" rx="6" fill="#1a2233" stroke="#30363d" stroke-width="1"/>
+  <text x="480" y="280" text-anchor="middle" fill="#58a6ff" font-family="monospace" font-size="12">list_providers</text>
+
+  <!-- Arrows: Server -> Providers -->
+  <line x1="620" y1="170" x2="740" y2="120" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <line x1="620" y1="220" x2="740" y2="220" stroke="#7b2fff" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <line x1="620" y1="270" x2="740" y2="320" stroke="#ff6b35" stroke-width="1.5" stroke-dasharray="6,3"/>
+
+  <!-- Provider 1: Tripo3D -->
+  <rect x="740" y="80" width="200" height="80" rx="10" fill="#0a1a0a" stroke="#2ea043" stroke-width="1.5"/>
+  <text x="840" y="110" text-anchor="middle" fill="#2ea043" font-family="Arial,sans-serif" font-size="15" font-weight="bold">Tripo3D</text>
+  <text x="840" y="130" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="11">v2.5 | 300 credits/mo</text>
+  <text x="840" y="148" text-anchor="middle" fill="#6e7681" font-family="Arial,sans-serif" font-size="10">text-to-3D, image-to-3D</text>
+
+  <!-- Provider 2: Hyper3D -->
+  <rect x="740" y="180" width="200" height="80" rx="10" fill="#0a0a1a" stroke="#7b2fff" stroke-width="1.5"/>
+  <text x="840" y="210" text-anchor="middle" fill="#7b2fff" font-family="Arial,sans-serif" font-size="15" font-weight="bold">Hyper3D Rodin</text>
+  <text x="840" y="230" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="11">Gen-1.5 | Free signup</text>
+  <text x="840" y="248" text-anchor="middle" fill="#6e7681" font-family="Arial,sans-serif" font-size="10">text-to-3D, image-to-3D</text>
+
+  <!-- Provider 3: Meshy -->
+  <rect x="740" y="280" width="200" height="80" rx="10" fill="#1a0e05" stroke="#ff6b35" stroke-width="1.5"/>
+  <text x="840" y="310" text-anchor="middle" fill="#ff6b35" font-family="Arial,sans-serif" font-size="15" font-weight="bold">Meshy</text>
+  <text x="840" y="330" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="11">Meshy-6 | Pro $10/mo</text>
+  <text x="840" y="348" text-anchor="middle" fill="#6e7681" font-family="Arial,sans-serif" font-size="10">text-to-3D, image-to-3D</text>
+
+  <!-- Output formats -->
+  <rect x="980" y="170" width="180" height="100" rx="10" fill="#1a2233" stroke="#30363d" stroke-width="1"/>
+  <text x="1070" y="198" text-anchor="middle" fill="#e6edf3" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Output Formats</text>
+  <text x="1070" y="222" text-anchor="middle" fill="#2ea043" font-family="monospace" font-size="12">.glb .fbx .obj</text>
+  <text x="1070" y="242" text-anchor="middle" fill="#7b2fff" font-family="monospace" font-size="12">.usdz .stl</text>
+  <text x="1070" y="260" text-anchor="middle" fill="#6e7681" font-family="Arial,sans-serif" font-size="10">+ PBR textures</text>
+
+  <!-- Arrow: Providers -> Output -->
+  <line x1="940" y1="220" x2="980" y2="220" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+  <!-- Workflow labels at bottom -->
+  <text x="600" y="420" text-anchor="middle" fill="#8b949e" font-family="Arial,sans-serif" font-size="14">Async workflow: submit task → poll status → download 3D model</text>
+
+  <!-- Bottom provider registry note -->
+  <rect x="340" y="440" width="280" height="40" rx="8" fill="#1a2233" stroke="#30363d" stroke-width="1"/>
+  <text x="480" y="465" text-anchor="middle" fill="#6e7681" font-family="Arial,sans-serif" font-size="11">BaseProvider + Registry Pattern</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00d4ff"/>
+    </marker>
+    <marker id="arrow2" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7b2fff"/>
+    </marker>
+  </defs>
+</svg>

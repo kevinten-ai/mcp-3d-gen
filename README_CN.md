@@ -1,6 +1,22 @@
 # mcp-3d-gen
 
-多平台 AI 3D 模型生成 MCP 服务器，专注于免费额度模型。
+<p align="center">
+  <img src="docs/banner.svg" alt="mcp-3d-gen banner" width="800">
+</p>
+
+<p align="center">
+  <strong>多平台 AI 3D 模型生成 MCP 服务器，专注于免费额度模型。</strong>
+</p>
+
+<p align="center">
+  <a href="README.md">English</a>
+</p>
+
+## 架构图
+
+<p align="center">
+  <img src="docs/architecture.svg" alt="架构图" width="800">
+</p>
 
 ## 支持的平台
 
