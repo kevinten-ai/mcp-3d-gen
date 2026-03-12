@@ -7,6 +7,7 @@ Multi-provider AI 3D model generation MCP server, focused on free-tier models.
 | Provider | Model | Free Tier | Output Formats |
 |---|---|---|---|
 | **Tripo3D** | v2.5 | 300 credits/month (~10 models) | GLB/FBX/OBJ |
+| **Hyper3D Rodin** | Rodin Gen-1.5 | Free credits on signup (~10 models) | GLB/FBX/OBJ/USDZ/STL |
 | **Meshy** | Meshy-6 | API requires Pro ($10/mo, 1000 credits) | GLB/FBX/OBJ/USDZ |
 
 ## Installation
@@ -16,6 +17,7 @@ Multi-provider AI 3D model generation MCP server, focused on free-tier models.
 ```bash
 claude mcp add -s user mcp-3d-gen \
   --env TRIPO_API_KEY=your_key \
+  --env HYPER3D_API_KEY=your_key \
   --env MESHY_API_KEY=your_key \
   -- uv --directory /path/to/mcp-3d-gen run model-gen
 ```
@@ -70,12 +72,35 @@ Only configure the providers you want to use. At least one API key is required.
 
 ---
 
+### 3. Hyper3D Rodin — Free Credits on Signup
+
+| Item | Detail |
+|---|---|
+| Platform | Hyper3D |
+| Website | https://hyper3d.ai |
+| API Docs | https://developer.hyper3d.ai |
+| Free Tier | **Free credits on signup (~10 models, 0.5 credits/model)** |
+| Env Var | `HYPER3D_API_KEY` |
+
+**Steps:**
+1. Visit https://hyper3d.ai and click **Sign Up** (supports Email or Google)
+2. After login, go to **Subscribe** page: https://hyper3d.ai/subscribe
+3. Navigate to **API Keys** section in your account settings
+4. Create a new API key and copy it
+
+> **Pricing:** Each generation costs 0.5 credits (Regular tier). Free signup credits give you ~10 models. Paid plans: Education ($15/month, 30 credits), Creator ($20-30/month, 30 credits with discounts). HighPack addon (4K textures) costs +1 credit.
+
+> **Formats:** Supports GLB, FBX, OBJ, USDZ, and STL output. PBR materials with base color, metallic, normal, and roughness maps.
+
+---
+
 ## Environment Variables
 
 | Variable | Provider | Required |
 |---|---|---|
 | `TRIPO_API_KEY` | Tripo3D | At least one |
-| `MESHY_API_KEY` | Meshy | must be configured |
+| `HYPER3D_API_KEY` | Hyper3D Rodin | provider must |
+| `MESHY_API_KEY` | Meshy | be configured |
 | `MODEL_OUTPUT_DIR` | Output path | Optional, default: `./output` |
 
 ## Tools
@@ -93,6 +118,7 @@ src/model_gen/
 └── providers/
     ├── __init__.py        # BaseProvider + registry
     ├── tripo.py           # Tripo3D
+    ├── hyper3d.py         # Hyper3D Rodin
     └── meshy.py           # Meshy
 ```
 

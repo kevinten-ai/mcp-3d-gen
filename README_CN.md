@@ -7,6 +7,7 @@
 | 平台 | 模型 | 免费额度 | 输出格式 |
 |---|---|---|---|
 | **Tripo3D** | v2.5 | 每月300积分（约10个模型） | GLB/FBX/OBJ |
+| **Hyper3D Rodin** | Rodin Gen-1.5 | 注册送积分（约10个模型） | GLB/FBX/OBJ/USDZ/STL |
 | **Meshy** | Meshy-6 | API 需 Pro 计划（$10/月，1000积分） | GLB/FBX/OBJ/USDZ |
 
 ## 安装
@@ -16,6 +17,7 @@
 ```bash
 claude mcp add -s user mcp-3d-gen \
   --env TRIPO_API_KEY=你的key \
+  --env HYPER3D_API_KEY=你的key \
   --env MESHY_API_KEY=你的key \
   -- uv --directory /path/to/mcp-3d-gen run model-gen
 ```
@@ -70,12 +72,35 @@ claude mcp add -s user mcp-3d-gen \
 
 ---
 
+### 3. Hyper3D Rodin — 注册送积分
+
+| 项目 | 详情 |
+|---|---|
+| 平台 | Hyper3D |
+| 官网 | https://hyper3d.ai |
+| API 文档 | https://developer.hyper3d.ai |
+| 免费额度 | **注册送积分（约10个模型，0.5积分/个）** |
+| 环境变量 | `HYPER3D_API_KEY` |
+
+**注册步骤：**
+1. 访问 https://hyper3d.ai ，点击 **Sign Up**（支持邮箱或 Google 账号）
+2. 登录后，进入 **Subscribe** 页面：https://hyper3d.ai/subscribe
+3. 在账户设置中找到 **API Keys** 部分
+4. 创建新 Key 并复制
+
+> **价格：** 每次生成消耗0.5积分（Regular 级别）。注册送的积分约可生成10个模型。付费计划：Education（$15/月，30积分）、Creator（$20-30/月，30积分+折扣）。HighPack 附加（4K 纹理）+1积分。
+
+> **格式：** 支持 GLB、FBX、OBJ、USDZ、STL 输出。PBR 材质包含 base color、metallic、normal、roughness 贴图。
+
+---
+
 ## 环境变量汇总
 
 | 变量 | 平台 | 说明 |
 |---|---|---|
-| `TRIPO_API_KEY` | Tripo3D | 至少配置 |
-| `MESHY_API_KEY` | Meshy | 一个平台 |
+| `TRIPO_API_KEY` | Tripo3D | 至少 |
+| `HYPER3D_API_KEY` | Hyper3D Rodin | 配置 |
+| `MESHY_API_KEY` | Meshy | 一个 |
 | `MODEL_OUTPUT_DIR` | 输出目录 | 可选，默认 `./output` |
 
 ## 工具说明
@@ -93,6 +118,7 @@ src/model_gen/
 └── providers/
     ├── __init__.py        # Provider 基类 + 注册机制
     ├── tripo.py           # Tripo3D
+    ├── hyper3d.py         # Hyper3D Rodin
     └── meshy.py           # Meshy
 ```
 

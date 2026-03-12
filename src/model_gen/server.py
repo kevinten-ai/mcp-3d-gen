@@ -18,6 +18,7 @@ from .providers import (
 )
 from .providers.tripo import TripoProvider
 from .providers.meshy import MeshyProvider
+from .providers.hyper3d import Hyper3DProvider
 
 MODEL_OUTPUT_DIR = os.getenv("MODEL_OUTPUT_DIR", os.path.join(os.getcwd(), "output"))
 
@@ -34,13 +35,17 @@ def _init_providers() -> None:
     if meshy_key:
         register_provider(MeshyProvider(meshy_key))
 
+    hyper3d_key = os.getenv("HYPER3D_API_KEY", "")
+    if hyper3d_key:
+        register_provider(Hyper3DProvider(hyper3d_key))
+
 
 _init_providers()
 
 
 def _default_provider_name() -> str | None:
     providers = get_all_providers()
-    for name in ("tripo", "meshy"):
+    for name in ("tripo", "hyper3d", "meshy"):
         if name in providers:
             return name
     return None
