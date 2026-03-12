@@ -7,7 +7,7 @@
 | 平台 | 模型 | 免费额度 | 输出格式 |
 |---|---|---|---|
 | **Tripo3D** | v2.5 | 每月300积分（约10个模型） | GLB/FBX/OBJ |
-| **Meshy** | Meshy-6 | 每月100积分（约5个模型） | GLB/FBX/OBJ/USDZ |
+| **Meshy** | Meshy-6 | API 需 Pro 计划（$10/月，1000积分） | GLB/FBX/OBJ/USDZ |
 
 ## 安装
 
@@ -24,41 +24,49 @@ claude mcp add -s user mcp-3d-gen \
 
 ## API Key 注册指南
 
-### 1. Tripo3D — 每月300积分免费
+### 1. Tripo3D — 每月300积分免费（Studio）
 
 | 项目 | 详情 |
 |---|---|
 | 平台 | Tripo3D |
-| 地址 | https://www.tripo3d.ai |
-| 免费额度 | **每月300积分（Basic 计划，约10个模型）** |
+| 官网 | https://www.tripo3d.ai |
+| API 平台 | https://platform.tripo3d.ai |
+| 免费额度 | **Basic 计划：每月300积分（约10个模型），1个并发任务** |
 | 环境变量 | `TRIPO_API_KEY` |
 
 **注册步骤：**
-1. 访问 https://www.tripo3d.ai 注册
-2. 进入 API 平台：https://platform.tripo3d.ai
-3. 在 **API Keys** 页面创建新 Key
-4. 复制 Key（格式：`tsk_xxxxxxxxxxxxxxxx`）
+1. 访问 https://www.tripo3d.ai ，点击 **Sign Up**（支持邮箱或 Google 账号）
+2. 登录后，进入 **API 平台**：https://platform.tripo3d.ai
+3. 进入 **API Keys** 页面：https://platform.tripo3d.ai/api-keys
+4. 点击 **Create API Key** 创建新 Key
+5. 复制 Key（格式：`tsk_xxxxxxxxxxxxxxxx`）
 
-> 免费计划每月300积分，1个并发任务，输出为公开（CC BY 4.0）。文字生3D约消耗30积分/个。
+> **价格：** Basic 计划免费，每月300积分。文字生3D约30积分/个。免费输出为公开模型（CC BY 4.0）。付费计划：Professional（$11.94/月，3000积分）、Advanced（$29.94/月，8000积分）。
+
+> **注意：** API 平台（platform.tripo3d.ai）与 Studio 网页端共用登录账号，但积分池独立。
 
 ---
 
-### 2. Meshy — 每月100积分免费
+### 2. Meshy — 每月100积分免费（API 需 Pro 计划）
 
 | 项目 | 详情 |
 |---|---|
 | 平台 | Meshy |
-| 地址 | https://www.meshy.ai |
-| 免费额度 | **每月100积分（文字生3D消耗5-20积分）** |
+| 官网 | https://www.meshy.ai |
+| API 设置 | https://www.meshy.ai/settings/api |
+| 免费额度 | **免费计划100积分/月，但 API 访问需 Pro 计划（$10/月起）** |
 | 环境变量 | `MESHY_API_KEY` |
 
 **注册步骤：**
-1. 访问 https://www.meshy.ai 注册
-2. 进入 API 设置：https://www.meshy.ai/api
-3. 创建 API Key
+1. 访问 https://www.meshy.ai ，点击 **Sign Up**（支持邮箱、Google、Apple）
+2. 登录后，进入 **Settings** > **API**：https://www.meshy.ai/settings/api
+3. 点击 **Create API Key** 创建新 Key
 4. 复制 Key（格式：`msy_xxxxxxxxxxxxxxxx`）
+5. 免费用户可使用 **测试模式 Key** `msy_dummy_api_key_for_test_mode_12345678` 来体验接口（不消耗积分，返回测试数据）
 
-> 免费计划每月10次下载，低优先级队列。API 访问可能需要 Pro 计划（$10/月）。
+> **价格：** 免费计划有100积分/月但**无 API 访问权限**（仅网页端）。Pro 计划（$10-20/月）解锁 API，1000积分。文字生3D消耗5-20积分/个。Studio 计划（$48-60/月）有4000积分。
+
+> **重要提示：** API 访问是 Pro 及以上计划的功能。免费用户只能通过网页端生成。如需免费 API 访问，建议优先使用 Tripo3D。
 
 ---
 

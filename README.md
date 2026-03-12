@@ -7,7 +7,7 @@ Multi-provider AI 3D model generation MCP server, focused on free-tier models.
 | Provider | Model | Free Tier | Output Formats |
 |---|---|---|---|
 | **Tripo3D** | v2.5 | 300 credits/month (~10 models) | GLB/FBX/OBJ |
-| **Meshy** | Meshy-6 | 100 credits/month (~5 models) | GLB/FBX/OBJ/USDZ |
+| **Meshy** | Meshy-6 | API requires Pro ($10/mo, 1000 credits) | GLB/FBX/OBJ/USDZ |
 
 ## Installation
 
@@ -24,41 +24,49 @@ Only configure the providers you want to use. At least one API key is required.
 
 ## API Key Registration Guide
 
-### 1. Tripo3D — 300 Credits/Month Free
+### 1. Tripo3D — 300 Credits/Month Free (Studio)
 
 | Item | Detail |
 |---|---|
 | Platform | Tripo3D |
-| URL | https://www.tripo3d.ai |
-| Free Tier | **300 credits/month (Basic plan, ~10 models)** |
+| Website | https://www.tripo3d.ai |
+| API Platform | https://platform.tripo3d.ai |
+| Free Tier | **Basic plan: 300 credits/month (~10 models), 1 concurrent task** |
 | Env Var | `TRIPO_API_KEY` |
 
 **Steps:**
-1. Visit https://www.tripo3d.ai and sign up
-2. Go to API Platform: https://platform.tripo3d.ai
-3. Navigate to **API Keys** and create a new key
-4. Copy the key (format: `tsk_xxxxxxxxxxxxxxxx`)
+1. Visit https://www.tripo3d.ai and click **Sign Up** (supports Email or Google)
+2. After login, go to the **API Platform**: https://platform.tripo3d.ai
+3. Navigate to **API Keys** page: https://platform.tripo3d.ai/api-keys
+4. Click **Create API Key** to generate a new key
+5. Copy the key (format: `tsk_xxxxxxxxxxxxxxxx`)
 
-> Free plan includes 300 credits/month, 1 concurrent task, and public outputs (CC BY 4.0). Text-to-3D costs ~30 credits/model.
+> **Pricing:** Basic plan is free with 300 credits/month. Text-to-3D costs ~30 credits/model. Free outputs are public (CC BY 4.0). Paid plans: Professional ($11.94/month, 3,000 credits), Advanced ($29.94/month, 8,000 credits).
+
+> **Note:** API access requires a separate API Platform account at platform.tripo3d.ai. The Studio (web UI) and API Platform share the same login but have separate credit pools.
 
 ---
 
-### 2. Meshy — 100 Credits/Month Free
+### 2. Meshy — 100 Credits/Month Free (API requires Pro)
 
 | Item | Detail |
 |---|---|
 | Platform | Meshy |
-| URL | https://www.meshy.ai |
-| Free Tier | **100 credits/month (text-to-3D costs 5-20 credits)** |
+| Website | https://www.meshy.ai |
+| API Settings | https://www.meshy.ai/settings/api |
+| Free Tier | **Free plan: 100 credits/month, but API access starts from Pro ($10/month)** |
 | Env Var | `MESHY_API_KEY` |
 
 **Steps:**
-1. Visit https://www.meshy.ai and sign up
-2. Go to API Settings: https://www.meshy.ai/api
-3. Create an API key
+1. Visit https://www.meshy.ai and click **Sign Up** (supports Email, Google, Apple)
+2. After login, go to **Settings** > **API**: https://www.meshy.ai/settings/api
+3. Click **Create API Key** to generate a new key
 4. Copy the key (format: `msy_xxxxxxxxxxxxxxxx`)
+5. If on free plan, you can use the **test mode key** `msy_dummy_api_key_for_test_mode_12345678` to explore endpoints (no credits consumed, returns test data)
 
-> Free plan has 10 downloads/month and lower priority queue. API access may require Pro plan ($10/month).
+> **Pricing:** Free plan has 100 credits/month but **no API access** (web UI only). Pro plan ($10/month or $20/month) unlocks API with 1,000 credits. Text-to-3D costs 5-20 credits/model. Studio ($48-60/month) has 4,000 credits.
+
+> **Important:** API & plugin access is a Pro+ feature. Free users can only generate via the web UI. Consider starting with Tripo3D if you want free API access.
 
 ---
 
