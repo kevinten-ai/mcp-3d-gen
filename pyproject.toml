@@ -1,7 +1,7 @@
 [project]
 name = "mcp-3d-gen"
 version = "1.0.0"
-description = "MCP server for AI 3D model generation with multiple providers. Supports Tripo3D and Meshy with text-to-3D and image-to-3D."
+description = "MCP server for AI 3D model generation with multiple providers. Supports Tripo3D, Hyper3D Rodin, and Meshy with text-to-3D and image-to-3D."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"

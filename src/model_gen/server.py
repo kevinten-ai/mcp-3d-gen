@@ -21,6 +21,7 @@ from .providers.meshy import MeshyProvider
 from .providers.hyper3d import Hyper3DProvider
 
 MODEL_OUTPUT_DIR = os.getenv("MODEL_OUTPUT_DIR", os.path.join(os.getcwd(), "output"))
+PROVIDER_CONFIG_HELP = "No providers configured. Set TRIPO_API_KEY, HYPER3D_API_KEY, or MESHY_API_KEY."
 
 server = Server("mcp-3d-gen")
 
@@ -156,7 +157,7 @@ async def handle_call_tool(
     if name == "list_providers":
         providers = get_all_providers()
         if not providers:
-            return [types.TextContent(type="text", text="No providers configured. Set TRIPO_API_KEY or MESHY_API_KEY.")]
+            return [types.TextContent(type="text", text=PROVIDER_CONFIG_HELP)]
         lines = ["**3D Model Generation Providers:**"]
         for p in providers.values():
             lines.append(f"  **{p.name}** - {p.description}\n    Free tier: {p.free_tier_info}")
@@ -169,7 +170,7 @@ async def handle_call_tool(
 
         provider_name = arguments.get("provider") or _default_provider_name()
         if not provider_name:
-            return [types.TextContent(type="text", text="No providers configured. Set TRIPO_API_KEY or MESHY_API_KEY.")]
+            return [types.TextContent(type="text", text=PROVIDER_CONFIG_HELP)]
 
         provider = get_provider(provider_name)
         if not provider:
