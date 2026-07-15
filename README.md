@@ -121,7 +121,7 @@ Only configure the providers you want to use. At least one API key is required.
 
 ## Tools
 
-- **generate_3d** — Generate a 3D model from text or image. Params: `prompt`, `image_url` (optional, for image-to-3D), `provider`, `output_format`.
+- **generate_3d** — Generate a 3D model from text or image. Params: `prompt`, `image_url` (optional, for image-to-3D), `provider`, `output_format` (`glb`, `fbx`, `obj`, `usdz`, or `stl`).
 - **query_3d_status** — Check generation status and download the result.
 - **list_providers** — Show all available providers and their free tier info.
 

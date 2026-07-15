@@ -121,8 +121,6 @@ class Hyper3DProvider(BaseProvider):
             # Determine overall status
             all_done = True
             any_failed = False
-            current_status = "processing"
-
             if isinstance(jobs, list):
                 for job in jobs:
                     if isinstance(job, dict):

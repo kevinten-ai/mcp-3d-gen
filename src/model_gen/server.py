@@ -4,6 +4,7 @@ import asyncio
 import os
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import httpx
 from mcp.server.models import InitializationOptions
@@ -22,6 +23,7 @@ from .providers.hyper3d import Hyper3DProvider
 
 MODEL_OUTPUT_DIR = os.getenv("MODEL_OUTPUT_DIR", os.path.join(os.getcwd(), "output"))
 PROVIDER_CONFIG_HELP = "No providers configured. Set TRIPO_API_KEY, HYPER3D_API_KEY, or MESHY_API_KEY."
+OUTPUT_FORMATS = ["glb", "fbx", "obj", "usdz", "stl"]
 
 server = Server("mcp-3d-gen")
 
@@ -55,11 +57,17 @@ def _default_provider_name() -> str | None:
 async def _try_download(url: str, output_dir: str, prefix: str, ext: str = "glb") -> str | None:
     """Try to download file to local disk."""
     try:
+        parsed = urlsplit(url)
+    except ValueError:
+        return None
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc or ext not in OUTPUT_FORMATS:
+        return None
+    try:
         out = Path(output_dir)
         out.mkdir(parents=True, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filepath = out / f"{prefix}_{timestamp}.{ext}"
-        async with httpx.AsyncClient(verify=False, follow_redirects=True) as client:
+        async with httpx.AsyncClient(follow_redirects=True) as client:
             resp = await client.get(url, timeout=120.0)
             if resp.status_code == 200 and len(resp.content) > 0:
                 filepath.write_bytes(resp.content)
@@ -97,7 +105,8 @@ async def handle_list_tools() -> list[types.Tool]:
                     },
                     "output_format": {
                         "type": "string",
-                        "description": "Output format: glb, fbx, obj, usdz. Default: glb",
+                        "description": "Output format: glb, fbx, obj, usdz, stl. Default: glb",
+                        "enum": OUTPUT_FORMATS,
                         "default": "glb",
                     },
                     "output_directory": {
@@ -125,7 +134,8 @@ async def handle_list_tools() -> list[types.Tool]:
                     },
                     "output_format": {
                         "type": "string",
-                        "description": "Preferred download format: glb, fbx, obj, usdz. Default: glb",
+                        "description": "Preferred download format: glb, fbx, obj, usdz, stl. Default: glb",
+                        "enum": OUTPUT_FORMATS,
                         "default": "glb",
                     },
                     "output_directory": {
@@ -179,6 +189,11 @@ async def handle_call_tool(
 
         image_url = arguments.get("image_url")
         output_format = arguments.get("output_format", "glb")
+        if output_format not in OUTPUT_FORMATS:
+            return [types.TextContent(
+                type="text",
+                text=f"Unsupported output_format: {output_format}. Choose one of: {', '.join(OUTPUT_FORMATS)}",
+            )]
 
         mode = "image-to-3D" if image_url else "text-to-3D"
         result = await provider.generate(prompt, image_url=image_url, output_format=output_format)
@@ -197,6 +212,13 @@ async def handle_call_tool(
         if not task_id or not provider_name:
             return [types.TextContent(type="text", text="Missing task_id or provider")]
 
+        output_format = arguments.get("output_format", "glb")
+        if output_format not in OUTPUT_FORMATS:
+            return [types.TextContent(
+                type="text",
+                text=f"Unsupported output_format: {output_format}. Choose one of: {', '.join(OUTPUT_FORMATS)}",
+            )]
+
         provider = get_provider(provider_name)
         if not provider:
             return [types.TextContent(type="text", text=f"Unknown provider: {provider_name}")]
@@ -211,7 +233,6 @@ async def handle_call_tool(
             return [types.TextContent(type="text", text=f"Failed: {result.error}")]
 
         # Success
-        output_format = arguments.get("output_format", "glb")
         output_dir = arguments.get("output_directory") or MODEL_OUTPUT_DIR
 
         results = []

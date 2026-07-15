@@ -121,7 +121,7 @@ claude mcp add -s user mcp-3d-gen \
 
 ## 工具说明
 
-- **generate_3d** — 根据文字或图片生成3D模型。参数：`prompt`（描述）、`image_url`（可选，图片转3D）、`provider`（平台）、`output_format`（格式）。
+- **generate_3d** — 根据文字或图片生成3D模型。参数：`prompt`（描述）、`image_url`（可选，图片转3D）、`provider`（平台）、`output_format`（`glb`、`fbx`、`obj`、`usdz` 或 `stl`）。
 - **query_3d_status** — 查询生成状态，完成后自动下载。
 - **list_providers** — 列出所有可用平台及其免费额度信息。
 
